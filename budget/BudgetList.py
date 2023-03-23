@@ -35,21 +35,21 @@ class BudgetList():
 
 
 def main():
-    myBudgetList = BudgetList(1200)
+    my_budget_list = BudgetList(1200)
     expenses = Expense.Expenses()
     expenses.read_expenses('data/spending_data.csv')
 
     for expense in expenses.list:
-        myBudgetList.append(expense.amount)
+        my_budget_list.append(expense.amount)
 
-    print('The count of all expenses: ' + str(len(myBudgetList)))
+    print('The count of all expenses: ' + str(len(my_budget_list)))
 
-    for entry in myBudgetList:
+    for entry in my_budget_list:
         print(entry)
 
     fig, ax = plt.subplots()
     labels = ['Expenses', 'Overages', 'Budget']
-    values = [myBudgetList.sum_expenses, myBudgetList.sum_overages, myBudgetList.budget]
+    values = [my_budget_list.sum_expenses, my_budget_list.sum_overages, my_budget_list.budget]
     ax.bar(labels, values, color=['green', 'red', 'blue'])
     ax.set_title('Your total expenses vs. total budget')
     plt.show()
