@@ -1,5 +1,6 @@
-from . import Expense
 import matplotlib.pyplot as plt
+
+from . import Expense
 
 
 class BudgetList():
@@ -29,7 +30,7 @@ class BudgetList():
     def __next__(self):
         try:
             return self.iter_e.__next__()
-        except:
+        except StopIteration as stop:
             return self.iter_o.__next__()
 
 
@@ -41,10 +42,10 @@ def main():
     for expense in expenses.list:
         myBudgetList.append(expense.amount)
 
-    #print('The count of all expenses: ' + str(len(myBudgetList)))
+    print('The count of all expenses: ' + str(len(myBudgetList)))
 
-    #for entry in myBudgetList:
-     #   print(entry)
+    for entry in myBudgetList:
+        print(entry)
 
     fig, ax = plt.subplots()
     labels = ['Expenses', 'Overages', 'Budget']
